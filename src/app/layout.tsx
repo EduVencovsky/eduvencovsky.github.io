@@ -1,19 +1,17 @@
 import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import cn from "classnames";
-import { ThemeSwitcher } from "./_components/theme-switcher";
 
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: `Next.js Blog Example with ${CMS_NAME}`,
-  description: `A statically generated blog example using Next.js and ${CMS_NAME}.`,
+  title: "Eduardo Vencovsky",
+  description: ``,
   openGraph: {
-    images: [HOME_OG_IMAGE_URL],
+    images: ["/assets/blog/author/author.png"],
   },
 };
 
@@ -23,7 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    // Always in dark mode
+    <html lang="en" className="dark">
       <head>
         <link
           rel="apple-touch-icon"
@@ -58,9 +57,11 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body
-        className={cn(inter.className, "dark:bg-slate-900 dark:text-slate-400")}
+        className={cn(
+          inter.className,
+          "dark:bg-blue-dark-background dark:text-white"
+        )}
       >
-        <ThemeSwitcher />
         <div className="min-h-screen">{children}</div>
         <Footer />
       </body>
